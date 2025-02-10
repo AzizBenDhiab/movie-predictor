@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.App {
+  text-align: center;
+  height: 100vh;
+  overflow-y: auto;
+  background-image: url("assets/dark-vip-cinema-studio-still-life.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Header styles */
+.header {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+  padding: 10px;
+}
+
+/* Hide the header when the form is active */
+.form-active .header {
+  display: none;
+}
+
+/* Content styling */
+.content {
+  padding-top: 150px;
+  padding-bottom: 50px;
+}
+
+/* Dark Themed Form Overlay */
+.form-overlay {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: #1a1a1a; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: top 0.3s ease-in-out;
+}
+
+/* Show form when scrolling */
+.form-overlay.show {
+  top: 0;
+}
+
+/* Form container */
+.film-form {
+  background-color: #222222; /* Darker grey form background */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1); /* Subtle glow effect */
+  width: 80%;
+  max-width: 600px;
+  color: #c0c0c0; /* White text */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Input fields */
+.film-form input,
+.film-form select,
+.film-form textarea {
+  width: 100%;
+  padding: 10px;
+  background: #333; /* Darker input fields */
+  border: 1px solid #555;
+  color: #c0c0c0;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Input focus effect */
+.film-form input:focus,
+.film-form select:focus,
+.film-form textarea:focus {
+  border-color: #c0c0c0; /* Gold highlight */
+  outline: none;
+}
+
+/* Submit button */
+/* .film-form button {
+  background: #c0c0c0;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+} */
+
+/* Close button */
+.film-form .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  color: #c0c0c0;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.film-form .close-btn:hover {
+  color: #696969;
+}
+
+.header h1 {
+  font-size: 2rem; /* Adjust the size of the main title */
+  font-weight: bold;
+  color: white; /* White text for better contrast */
+  margin: 0; /* Remove default margin */
+}
+
+.header h2 {
+  font-size: 1.2rem; /* Smaller size for the subtitle */
+  font-weight: lighter;
+  color: #ddd; /* Slightly lighter color for the subtitle */
+  margin: 0; /* Remove default margin */
+}
