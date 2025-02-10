@@ -4,12 +4,13 @@ import "./filmPredictionForm.css";
 export default function FilmPredictionForm({ backToHome }) {
   const [formData, setFormData] = useState({
     title: "",
-    description: "",
+    overview: "",
     keywords: [],
-    company: "",
-    language: "",
+    company_list: "",
+    original_language: "",
     genres: [],
-    belongsToCollection: false, // New boolean field
+    popularity: 20,
+    belongs_to_collection_binary: false, // New boolean field
   });
 
   const [languages, setLanguages] = useState([]);
@@ -109,9 +110,11 @@ export default function FilmPredictionForm({ backToHome }) {
 
     const dataToSubmit = {
       ...formData,
-      company: [formData.company], // Ensure company is in a list
+      company_list: [formData.company_list], // Ensure company is in a list
       ...genreFlags,
-      belongsToCollection: formData.belongsToCollection ? 1 : 0,
+      belongs_to_collection_binary: formData.belongs_to_collection_binary
+        ? 1
+        : 0,
     };
 
     delete dataToSubmit.genres;
@@ -133,7 +136,7 @@ export default function FilmPredictionForm({ backToHome }) {
 
       const result = await response.json();
       console.log(result);
-      setPrediction(result);
+      setPrediction(result.imdb_weighted_rating);
     } catch (error) {
       console.error("Error submitting data:", error);
     } finally {
@@ -161,25 +164,25 @@ export default function FilmPredictionForm({ backToHome }) {
         />
         <label>Description:</label>
         <textarea
-          name="description"
+          name="overview"
           placeholder="Enter description"
-          value={formData.description}
+          value={formData.overview}
           onChange={handleChange}
           className="form-input"
         />
         <label>Production Company:</label>
         <input
           type="text"
-          name="company"
+          name="company_list"
           placeholder="Enter company"
-          value={formData.company}
+          value={formData.company_list}
           onChange={handleChange}
           className="form-input"
         />
         <label>Select Language:</label>
         <select
-          name="language"
-          value={formData.language}
+          name="original_language"
+          value={formData.original_language}
           onChange={handleChange}
           className="form-input"
         >
@@ -194,8 +197,8 @@ export default function FilmPredictionForm({ backToHome }) {
           Belongs to a Collection:
           <input
             type="checkbox"
-            name="belongsToCollection"
-            checked={formData.belongsToCollection}
+            name="belongs_to_collection_binary"
+            checked={formData.belongs_to_collection_binary}
             onChange={handleChange}
           />
         </label>
