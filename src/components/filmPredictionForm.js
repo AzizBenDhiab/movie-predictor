@@ -11,6 +11,7 @@ export default function FilmPredictionForm({ backToHome }) {
     genres: [],
     popularity: 20,
     belongs_to_collection_binary: false, // New boolean field
+    id: 1,
   });
 
   const [languages, setLanguages] = useState([]);
