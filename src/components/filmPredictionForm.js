@@ -119,6 +119,9 @@ export default function FilmPredictionForm({ backToHome }) {
     };
 
     delete dataToSubmit.genres;
+        delete dataToSubmit.genres;
+        delete dataToSubmit.title;
+
 
     console.log("Sending request:", JSON.stringify(dataToSubmit));
 
